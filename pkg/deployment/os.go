@@ -61,10 +61,22 @@ func InstallOS(ctx context.Context, helper *helper.Helper, obj client.Object, ss
 			Tags:          []string{"edpm_chrony"},
 		},
 		{
+			Name:          "Install frr",
+			RoleName:      "osp.edpm.edpm_frr",
+			RoleTasksFrom: "install.yml",
+			Tags:          []string{"edpm_frr"},
+		},
+		{
 			Name:          "Install edpm_ovn",
 			RoleName:      "osp.edpm.edpm_ovn",
 			RoleTasksFrom: "install.yml",
 			Tags:          []string{"edpm_ovn"},
+		},
+		{
+			Name:          "Install ovn_bgp_agent",
+			RoleName:      "osp.edpm.edpm_ovn_bgp_agent",
+			RoleTasksFrom: "install.yml",
+			Tags:          []string{"edpm_ovn_bgp_agent"},
 		},
 	}
 	role := ansibleeev1alpha1.Role{
@@ -128,10 +140,22 @@ func ConfigureOS(ctx context.Context, helper *helper.Helper, obj client.Object, 
 			Tags:          []string{"edpm_timezone"},
 		},
 		{
+			Name:          "Configure edpm_frr",
+			RoleName:      "osp.edpm.edpm_frr",
+			RoleTasksFrom: "configure.yml",
+			Tags:          []string{"edpm_frr"},
+		},
+		{
 			Name:          "Configure edpm_ovn",
 			RoleName:      "osp.edpm.edpm_ovn",
 			RoleTasksFrom: "configure.yml",
 			Tags:          []string{"edpm_ovn"},
+		},
+		{
+			Name:          "Configure edpm_ovn_bgp_agent",
+			RoleName:      "osp.edpm.edpm_ovn_bgp_agent",
+			RoleTasksFrom: "configure.yml",
+			Tags:          []string{"edpm_ovn_bgp_agent"},
 		},
 	}
 	role := ansibleeev1alpha1.Role{
@@ -189,10 +213,22 @@ func RunOS(ctx context.Context, helper *helper.Helper, obj client.Object, sshKey
 			Tags:          []string{"edpm_timezone"},
 		},
 		{
+			Name:          "Run frr",
+			RoleName:      "osp.edpm.edpm_frr",
+			RoleTasksFrom: "run.yml",
+			Tags:          []string{"edpm_frr"},
+		},
+		{
 			Name:          "Run edpm_ovn",
 			RoleName:      "osp.edpm.edpm_ovn",
 			RoleTasksFrom: "run.yml",
 			Tags:          []string{"edpm_ovn"},
+		},
+		{
+			Name:          "Run ovn_bgp_agent",
+			RoleName:      "osp.edpm.edpm_ovn_bgp_agent",
+			RoleTasksFrom: "run.yml",
+			Tags:          []string{"edpm_ovn_bgp_agent"},
 		},
 	}
 	role := ansibleeev1alpha1.Role{
